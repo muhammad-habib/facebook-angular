@@ -38,17 +38,6 @@ export class FacebookComponent implements OnInit {
   }
 
   /**
-   * Get the users friends
-   */
-  getFriends() {
-    this.fb.api('/me/posts')
-      .then((res: any) => {
-        console.log('Got the users friends', res);
-      })
-      .catch(this.handleError);
-  }
-
-  /**
    * This is a convenience method for the sake of this example project.
    * Do not use this in production, it's better to handle errors separately.
    * @param error
