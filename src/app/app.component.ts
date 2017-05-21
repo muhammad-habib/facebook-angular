@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
   title = 'app works!';
 
   constructor(
-    private _auth: AuthService
+    public _auth: AuthService
   ) {}
 
   ngOnInit() {

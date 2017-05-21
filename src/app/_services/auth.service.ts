@@ -23,7 +23,6 @@ export class AuthService {
       .then((response) => {
         let user = response.json();
         if (user) {
-          console.log(user);
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.router.navigate(['']);
         }

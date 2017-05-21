@@ -11,7 +11,7 @@ import {Http} from "@angular/http";
 })
 
 export class PostsComponent implements OnInit {
-  private posts: any;
+  public posts: any;
   constructor(
     private postServ: PostsService,
     private _auth: AuthService,
@@ -26,20 +26,6 @@ export class PostsComponent implements OnInit {
   getPosts(): void {
     this.postServ.getPosts().then((res=>{
       this.posts = res;
-      console.log(this.posts[1]);
     }));
   }
-  //
-  // frind(fr: any)
-  // {
-  //
-  //   let Url = 'http://graph.facebook.com/'+fr.id+'/picture';
-  //   return this.http.get(Url)
-  //     .toPromise()
-  //     .then((response) =>{
-  //       console.log(response);
-  //     })
-  //     .catch();
-  // }
-
 }
