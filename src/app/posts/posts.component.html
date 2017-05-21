@@ -24,7 +24,7 @@
     <h3 class="ui dividing header">Comments</h3>
     <div *ngFor="let comment of post?.comments?.data"  class="comment">
       <a class="avatar">
-        <img src="http://graph.facebook.com/{{comment.from.id}}/picture">
+        <img src="https://graph.facebook.com/{{comment.from.id}}/picture">
       </a>
       <div class="content">
         <a class="author">{{comment.from.name}}</a>
@@ -38,7 +38,7 @@
       <div  class="comments">
         <div *ngFor="let replay of comment?.comments?.data"  class="comment">
           <a class="avatar">
-            <img  src="http://graph.facebook.com/{{replay.from.id}}/picture">
+            <img  src="https://graph.facebook.com/{{replay.from.id}}/picture">
           </a>
           <div class="content">
             <a class="author">{{replay.from.name}}</a>

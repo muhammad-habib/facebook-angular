@@ -26,7 +26,7 @@ export class FacebookComponent implements OnInit {
   fbLogin(){
 
     const options: LoginOptions = {
-      scope: 'public_profile,user_friends,email,pages_show_list',
+      scope: 'public_profile,user_friends,email,pages_show_list,user_posts',
       return_scopes: true,
       enable_profile_selector: true
     };
