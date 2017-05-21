@@ -1,3 +1,31 @@
-<h1>
-  {{title}}
-</h1>
+<div class="ui inverted attached stackable menu">
+  <div class="ui container">
+    <a [routerLink]="['/']"  *ngIf="_auth.isLoggedIn()" class="item">
+    <i class=" home icon"></i> Home
+    </a>
+
+    <a [routerLink]="['/posts']"  *ngIf="_auth.isLoggedIn()" class="item">
+      <i class="sign out icon"></i> Posts
+    </a>
+
+    <div class="right item">
+      <div class="ui input"><input type="text" placeholder="Search..."></div>
+      <!--<a href="" class="item">-->
+        <!--<i class="sign out icon"></i> Sign Out-->
+      <!--</a>-->
+      <a [routerLink]="['/login']"   *ngIf="!_auth.isLoggedIn()" class="item">
+        <i class="sign in icon"></i> Sign In
+      </a>
+
+      <a [routerLink]="['/logout']"  (click)="_auth.logout()"  *ngIf="_auth.isLoggedIn()" class="item">
+        <i class="sign out icon"></i> Sign Out
+      </a>
+      <!--<a href="" class="item">-->
+        <!--<i class="add user icon"></i> Sign Up-->
+      <!--</a>-->
+    </div>
+  </div>
+</div>
+<div class="ui raised  container segment">
+  <router-outlet></router-outlet>
+</div>
