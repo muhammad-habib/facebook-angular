@@ -1,0 +1,58 @@
+<div *ngFor="let post of posts"   class="ui feed raised  container segment">
+  <div class="event">
+    <div class="label">
+      <img src="{{_auth.getCurrentUser().picture.data.url}}">
+    </div>
+    <div class="content">
+      <div class="summary">
+        <a>{{_auth.getCurrentUser().name}}</a> posted on his account
+        <div class="date">
+          {{post.created_time}}
+        </div>
+      </div>
+      <div class="extra text">
+        {{post.message}}
+      </div>
+      <div class="meta">
+        <a class="like" *ngIf="post?.likes?.data?.length">
+          <i class="like icon"></i> {{post?.likes?.data?.length}} Likes
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="ui threaded comments">
+    <h3 class="ui dividing header">Comments</h3>
+    <div *ngFor="let comment of post?.comments?.data"  class="comment">
+      <a class="avatar">
+        <img src="http://graph.facebook.com/{{comment.from.id}}/picture">
+      </a>
+      <div class="content">
+        <a class="author">{{comment.from.name}}</a>
+        <div class="metadata">
+          <span class="date">{{comment.created_time}}</span>
+        </div>
+        <div class="text">
+          <p>{{comment.message}}</p>
+        </div>
+      </div>
+      <div  class="comments">
+        <div *ngFor="let replay of comment?.comments?.data"  class="comment">
+          <a class="avatar">
+            <img  src="http://graph.facebook.com/{{replay.from.id}}/picture">
+          </a>
+          <div class="content">
+            <a class="author">{{replay.from.name}}</a>
+            <div class="metadata">
+              <span class="date">{{replay.created_time}}</span>
+            </div>
+            <div class="text">
+              {{replay.message}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

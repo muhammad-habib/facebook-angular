@@ -11,6 +11,7 @@ import {SuiModule} from 'ng2-semantic-ui';
 import { HomeComponent } from './home/home.component';
 import {AuthGuard} from "./_services/guard";
 import {AuthService} from "./_services/auth.service";
+import { PostsComponent } from './posts/posts.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {AuthService} from "./_services/auth.service";
     AppComponent,
     FacebookComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
