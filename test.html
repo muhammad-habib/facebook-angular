@@ -1,0 +1,70 @@
+<html>
+<head></head>
+<body>
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    {{--<script src="{{ asset("firebase-messaging-sw.js")}}"></script>--}}
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDpoFSB2iNGMIwacjOGEuh_lwKY5Byz7Mc",
+            authDomain: "medifi-58b69.firebaseapp.com",
+            databaseURL: "https://medifi-58b69.firebaseio.com",
+            projectId: "medifi-58b69",
+            storageBucket: "medifi-58b69.appspot.com",
+            messagingSenderId: "842381163310"
+        };
+        firebase.initializeApp(config);
+        // Retrieve Firebase Messaging object.
+        const messaging = firebase.messaging();
+        messaging.requestPermission()
+            .then(function() {
+                console.log('Notification permission granted.');
+                navigator.serviceWorker.ready.then(function(registration) {
+                    registration.showNotification('Vibration Sample', {
+                        body: 'Buzz! Buzz!',
+                        icon: '../images/touch/chrome-touch-icon-192x192.png',
+                        vibrate: [200, 100, 200, 100, 200, 100, 200],
+                        tag: 'vibration-sample'
+                    });
+                });
+            
+                // ...
+            })
+            .catch(function(err) {
+                console.log('Unable to get permission to notify.', err);
+            });
+
+        // Get Instance ID token. Initially this makes a network call, once retrieved
+        // subsequent calls to getToken will return from cache.
+        messaging.getToken()
+            .then(function(currentToken) {
+                if (currentToken) {
+                    console.log(currentToken);
+//                    sendTokenToServer(currentToken);
+//                    updateUIForPushEnabled(currentToken);
+                } else {
+                    // Show permission request.
+                    console.log('No Instance ID token available. Request permission to generate one.');
+                    // Show permission UI.
+//                    updateUIForPushPermissionRequired();
+//                    setTokenSentToServer(false);
+                }
+            })
+            .catch(function(err) {
+                console.log('An error occurred while retrieving token. ', err);
+                showToken('Error retrieving Instance ID token. ', err);
+                setTokenSentToServer(false);
+            });
+
+        // Handle incoming messages. Called when:
+        // - a message is received while the app has focus
+        // - the user clicks on an app notification created by a sevice worker
+        //   `messaging.setBackgroundMessageHandler` handler.
+        messaging.onMessage(function(payload) {
+            console.log("Message received. ");
+            // ...
+        });
+
+    </script>
+</body>
+</html>
